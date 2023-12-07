@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfEmployeeClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <EmployeeClass>
+    <EmployeeId>1</EmployeeId>
+    <FirstName>Deepak</FirstName>
+    <LastName>Yadav</LastName>
+    <Email>Deepak.Yadav@gmail.com</Email>
+    <MobileNumber>9974901567</MobileNumber>
+    <Address>Silvassa</Address>
+    <RoleId>1</RoleId>
+  </EmployeeClass>
+  <EmployeeClass>
+    <EmployeeId>2</EmployeeId>
+    <FirstName>Dhara</FirstName>
+    <LastName>Parmar</LastName>
+    <Email>Dhara.Parmar@gmail.com</Email>
+    <MobileNumber>9876543210</MobileNumber>
+    <Address>Vadodara</Address>
+    <RoleId>1</RoleId>
+  </EmployeeClass>
+</ArrayOfEmployeeClass>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfProjectClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectClass>
+    <ProjectId>1</ProjectId>
+    <Name>Project1</Name>
+    <StartDate>2023-02-21T00:00:00</StartDate>
+    <EndDate>2026-02-21T00:00:00</EndDate>
+  </ProjectClass>
+</ArrayOfProjectClass>
