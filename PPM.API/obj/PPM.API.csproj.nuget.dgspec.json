@@ -1,37 +1,39 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DYadav\\PPM\\PPM.API\\PPM.API.csproj": {}
+    "M:\\Self-Project\\PPM\\PPM.API\\PPM.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DYadav\\PPM\\PPM.API\\PPM.API.csproj": {
+    "M:\\Self-Project\\PPM\\PPM.API\\PPM.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DYadav\\PPM\\PPM.API\\PPM.API.csproj",
+        "projectUniqueName": "M:\\Self-Project\\PPM\\PPM.API\\PPM.API.csproj",
         "projectName": "PPM.API",
-        "projectPath": "C:\\Users\\DYadav\\PPM\\PPM.API\\PPM.API.csproj",
-        "packagesPath": "C:\\Users\\DYadav\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DYadav\\PPM\\PPM.API\\obj\\",
+        "projectPath": "M:\\Self-Project\\PPM\\PPM.API\\PPM.API.csproj",
+        "packagesPath": "C:\\Users\\Deepak Yadav\\.nuget\\packages\\",
+        "outputPath": "M:\\Self-Project\\PPM\\PPM.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\DYadav\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Deepak Yadav\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\DYadav\\PPM\\PPM.Domain\\PPM.Domain.csproj": {
-                "projectPath": "C:\\Users\\DYadav\\PPM\\PPM.Domain\\PPM.Domain.csproj"
+              "M:\\Self-Project\\PPM\\PPM.Domain\\PPM.Domain.csproj": {
+                "projectPath": "M:\\Self-Project\\PPM\\PPM.Domain\\PPM.Domain.csproj"
               },
-              "C:\\Users\\DYadav\\PPM\\PPM.Model\\PPM.Model.csproj": {
-                "projectPath": "C:\\Users\\DYadav\\PPM\\PPM.Model\\PPM.Model.csproj"
+              "M:\\Self-Project\\PPM\\PPM.Entity.Framework\\PPM.Entity.Framework.csproj": {
+                "projectPath": "M:\\Self-Project\\PPM\\PPM.Entity.Framework\\PPM.Entity.Framework.csproj"
+              },
+              "M:\\Self-Project\\PPM\\PPM.Model\\PPM.Model.csproj": {
+                "projectPath": "M:\\Self-Project\\PPM\\PPM.Model\\PPM.Model.csproj"
               }
             }
           }
@@ -94,21 +96,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\DYadav\\PPM\\PPM.Dal\\PPM.Dal.csproj": {
+    "M:\\Self-Project\\PPM\\PPM.Dal\\PPM.Dal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DYadav\\PPM\\PPM.Dal\\PPM.Dal.csproj",
+        "projectUniqueName": "M:\\Self-Project\\PPM\\PPM.Dal\\PPM.Dal.csproj",
         "projectName": "PPM.Dal",
-        "projectPath": "C:\\Users\\DYadav\\PPM\\PPM.Dal\\PPM.Dal.csproj",
-        "packagesPath": "C:\\Users\\DYadav\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DYadav\\PPM\\PPM.Dal\\obj\\",
+        "projectPath": "M:\\Self-Project\\PPM\\PPM.Dal\\PPM.Dal.csproj",
+        "packagesPath": "C:\\Users\\Deepak Yadav\\.nuget\\packages\\",
+        "outputPath": "M:\\Self-Project\\PPM\\PPM.Dal\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\DYadav\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Deepak Yadav\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -120,8 +122,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\DYadav\\PPM\\PPM.Model\\PPM.Model.csproj": {
-                "projectPath": "C:\\Users\\DYadav\\PPM\\PPM.Model\\PPM.Model.csproj"
+              "M:\\Self-Project\\PPM\\PPM.Model\\PPM.Model.csproj": {
+                "projectPath": "M:\\Self-Project\\PPM\\PPM.Model\\PPM.Model.csproj"
               }
             }
           }
@@ -165,21 +167,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\DYadav\\PPM\\PPM.Domain\\PPM.Domain.csproj": {
+    "M:\\Self-Project\\PPM\\PPM.Domain\\PPM.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DYadav\\PPM\\PPM.Domain\\PPM.Domain.csproj",
+        "projectUniqueName": "M:\\Self-Project\\PPM\\PPM.Domain\\PPM.Domain.csproj",
         "projectName": "PPM.Domain",
-        "projectPath": "C:\\Users\\DYadav\\PPM\\PPM.Domain\\PPM.Domain.csproj",
-        "packagesPath": "C:\\Users\\DYadav\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DYadav\\PPM\\PPM.Domain\\obj\\",
+        "projectPath": "M:\\Self-Project\\PPM\\PPM.Domain\\PPM.Domain.csproj",
+        "packagesPath": "C:\\Users\\Deepak Yadav\\.nuget\\packages\\",
+        "outputPath": "M:\\Self-Project\\PPM\\PPM.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\DYadav\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Deepak Yadav\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -191,14 +193,14 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\DYadav\\PPM\\PPM.Dal\\PPM.Dal.csproj": {
-                "projectPath": "C:\\Users\\DYadav\\PPM\\PPM.Dal\\PPM.Dal.csproj"
+              "M:\\Self-Project\\PPM\\PPM.Dal\\PPM.Dal.csproj": {
+                "projectPath": "M:\\Self-Project\\PPM\\PPM.Dal\\PPM.Dal.csproj"
               },
-              "C:\\Users\\DYadav\\PPM\\PPM.Entity.Framework\\PPM.Entity.Framework.csproj": {
-                "projectPath": "C:\\Users\\DYadav\\PPM\\PPM.Entity.Framework\\PPM.Entity.Framework.csproj"
+              "M:\\Self-Project\\PPM\\PPM.Entity.Framework\\PPM.Entity.Framework.csproj": {
+                "projectPath": "M:\\Self-Project\\PPM\\PPM.Entity.Framework\\PPM.Entity.Framework.csproj"
               },
-              "C:\\Users\\DYadav\\PPM\\PPM.Model\\PPM.Model.csproj": {
-                "projectPath": "C:\\Users\\DYadav\\PPM\\PPM.Model\\PPM.Model.csproj"
+              "M:\\Self-Project\\PPM\\PPM.Model\\PPM.Model.csproj": {
+                "projectPath": "M:\\Self-Project\\PPM\\PPM.Model\\PPM.Model.csproj"
               }
             }
           }
@@ -228,21 +230,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\DYadav\\PPM\\PPM.Entity.Framework\\PPM.Entity.Framework.csproj": {
+    "M:\\Self-Project\\PPM\\PPM.Entity.Framework\\PPM.Entity.Framework.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DYadav\\PPM\\PPM.Entity.Framework\\PPM.Entity.Framework.csproj",
+        "projectUniqueName": "M:\\Self-Project\\PPM\\PPM.Entity.Framework\\PPM.Entity.Framework.csproj",
         "projectName": "PPM.Entity.Framework",
-        "projectPath": "C:\\Users\\DYadav\\PPM\\PPM.Entity.Framework\\PPM.Entity.Framework.csproj",
-        "packagesPath": "C:\\Users\\DYadav\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DYadav\\PPM\\PPM.Entity.Framework\\obj\\",
+        "projectPath": "M:\\Self-Project\\PPM\\PPM.Entity.Framework\\PPM.Entity.Framework.csproj",
+        "packagesPath": "C:\\Users\\Deepak Yadav\\.nuget\\packages\\",
+        "outputPath": "M:\\Self-Project\\PPM\\PPM.Entity.Framework\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\DYadav\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Deepak Yadav\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -254,8 +256,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\DYadav\\PPM\\PPM.Model\\PPM.Model.csproj": {
-                "projectPath": "C:\\Users\\DYadav\\PPM\\PPM.Model\\PPM.Model.csproj"
+              "M:\\Self-Project\\PPM\\PPM.Model\\PPM.Model.csproj": {
+                "projectPath": "M:\\Self-Project\\PPM\\PPM.Model\\PPM.Model.csproj"
               }
             }
           }
@@ -307,21 +309,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\DYadav\\PPM\\PPM.Model\\PPM.Model.csproj": {
+    "M:\\Self-Project\\PPM\\PPM.Model\\PPM.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DYadav\\PPM\\PPM.Model\\PPM.Model.csproj",
+        "projectUniqueName": "M:\\Self-Project\\PPM\\PPM.Model\\PPM.Model.csproj",
         "projectName": "PPM.Model",
-        "projectPath": "C:\\Users\\DYadav\\PPM\\PPM.Model\\PPM.Model.csproj",
-        "packagesPath": "C:\\Users\\DYadav\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DYadav\\PPM\\PPM.Model\\obj\\",
+        "projectPath": "M:\\Self-Project\\PPM\\PPM.Model\\PPM.Model.csproj",
+        "packagesPath": "C:\\Users\\Deepak Yadav\\.nuget\\packages\\",
+        "outputPath": "M:\\Self-Project\\PPM\\PPM.Model\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\DYadav\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Deepak Yadav\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -360,7 +362,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     }

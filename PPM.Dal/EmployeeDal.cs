@@ -273,39 +273,6 @@ namespace PPM.Dal
             }
         }
 
-        public long EmployeeRole(long EmployeeId)
-        {
-            long RoleId = 0; // Initialize to a default value
-
-            try
-            {
-                using (SqlConnection con = new SqlConnection(connectionString))
-                {
-                    con.Open(); // Opening Connection
-
-                    string query = $"Select RoleId FROM PPM_Employee WHERE EmployeeId = {EmployeeId}";
-                    SqlCommand cm = new SqlCommand(query, con);
-
-                    using (SqlDataReader sdr = cm.ExecuteReader())
-                    {
-                        if (sdr.Read()) // Check if there are rows
-                        {
-                            RoleId = (long)sdr["RoleId"];
-                        }
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-                // Log the exception
-                Console.WriteLine($"Error: {ex.Message}");
-                throw; // Rethrow the exception to propagate it to the calling code
-            }
-
-            return RoleId; // Return the default value if an error occurs
-        }
-
         public bool EmployeeExist(long EmployeeId)
         {
             bool Check = false; // Initialize to a default value
@@ -372,38 +339,6 @@ namespace PPM.Dal
             return Check; // Return the default value if an error occurs
         }
 
-        // public bool MobileNumberExist(string MobileNumber)
-        // {
-        //     bool Check = false; // Initialize to a default value
-
-        //     try
-        //     {
-        //         using (SqlConnection connection = new SqlConnection("your_connection_string_here"))
-        //         {
-        //             connection.Open(); // Opening Connection
-
-        //             string query = "SELECT * FROM PPM_Employee WHERE MobileNumber = @MobileNumber";
-        //             SqlCommand cmd = new SqlCommand(query, connection);
-        //             cmd.Parameters.AddWithValue("@MobileNumber", MobileNumber);
-
-        //             using (SqlDataReader sdr = cmd.ExecuteReader())
-        //             {
-        //                 if (sdr.Read()) // Check if there are rows
-        //                 {
-        //                     Check = true;
-        //                 }
-        //             }
-        //         }
-        //     }
-        //     catch (Exception ex)
-        //     {
-        //         // Log the exception
-        //         Console.WriteLine($"Error: {ex.Message}");
-        //         throw; // Rethrow the exception to propagate it to the calling code
-        //     }
-
-        //     return Check; // Return the default value if an error occurs
-        // }
         public bool MobileNumberExist(string MobileNumber)
         {
             bool Check = false; // Initialize to a default value
@@ -435,6 +370,35 @@ namespace PPM.Dal
             }
 
             return Check; // Return the default value if an error occurs
+        }
+
+        public bool EmployeeActiveAsRole(long RoleId)
+        {
+            bool check = false; // Initialize to a default value
+
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    con.Open(); // Opening Connection
+
+                    string query = $"SELECT * FROM PPM_Employee WHERE RoleId = {RoleId}";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        check = reader.Read(); // Check if there are rows
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Console.WriteLine($"Error: {ex.Message}");
+                throw; // Rethrow the exception to propagate it to the calling code
+            }
+
+            return check;
         }
 
     }

@@ -6,6 +6,31 @@ namespace PPM.Entity.Framework
     {
         private List<ProjectClass> projectList { get; set; } = new List<ProjectClass>(); // Change to instance field
 
+        public long GetLastProjectId()
+        {
+            long lastProjectId = 0;
+
+            try
+            {
+                using (var context = new EntityFrameworkClass())
+                {
+                    var lastProject = context.PPM_Project.OrderByDescending(p => p.ProjectId).FirstOrDefault();
+
+                    if (lastProject != null)
+                    {
+                        lastProjectId = lastProject.ProjectId;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+            return lastProjectId;
+        }
+
+
         public void AddProject(ProjectClass project)
         {
             try

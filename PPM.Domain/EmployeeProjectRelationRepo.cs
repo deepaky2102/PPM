@@ -24,6 +24,13 @@ namespace PPM.Domain
             return employeeProjectEntityClass.GetAllProEmpRel();
         }
 
+        public List<EmployeeProjectRelationClass> GetEmployeeProjectById(long Id)
+        {
+            // return EmpProRelList.FindAll(x => x.Id == Id);
+            // return employeeProjectRelationDal.GetEmployeeProjectById(Id);
+            return employeeProjectEntityClass.GetEmployeeProjectById(Id);
+        }
+
         public List<EmployeeProjectRelationClass> GetObjectByProjectId (long ProjectId)
         {
             // return EmpProRelList.FindAll(x => x.ProjectId == ProjectId);
@@ -48,7 +55,7 @@ namespace PPM.Domain
         // public void DeleteObject(EmployeeProjectRelationClass IdToRemove)
         public void DeleteObject(long Id)
         {
-            // IdToRemove.Status = "Inactive";
+            // EmpProRelList.Remove(IdToRemove);
             // employeeProjectRelationDal.DeleteProEmpRel(IdToRemove.Id);
             // employeeProjectRelationDal.DeleteProEmpRel(Id);
             employeeProjectEntityClass.DeleteProEmpRel(Id);

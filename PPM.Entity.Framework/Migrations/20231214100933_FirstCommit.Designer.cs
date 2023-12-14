@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PPM.Entity.Framework;
 
@@ -11,9 +12,11 @@ using PPM.Entity.Framework;
 namespace PPM.Entity.Framework.Migrations
 {
     [DbContext(typeof(EntityFrameworkClass))]
-    partial class EntityFrameworkClassModelSnapshot : ModelSnapshot
+    [Migration("20231214100933_FirstCommit")]
+    partial class FirstCommit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -131,7 +134,7 @@ namespace PPM.Entity.Framework.Migrations
                     b.HasOne("PPM.Model.RoleClass", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Cascade)   
                         .IsRequired();
 
                     b.Navigation("Role");

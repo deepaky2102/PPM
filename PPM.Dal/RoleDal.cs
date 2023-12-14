@@ -1,4 +1,5 @@
 using PPM.Model;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace PPM.Dal
@@ -8,7 +9,7 @@ namespace PPM.Dal
         readonly string connectionString = "Server=RHJ-9F-D218\\SQLEXPRESS; Database=PPM; Integrated Security=SSPI";
         public RoleDal()
         {
-            
+
         }
 
         public void AddRole(RoleClass roleClass)
@@ -20,9 +21,10 @@ namespace PPM.Dal
                     con.Open();
                     string query = "INSERT INTO PPM_Role (Name) VALUES (@Name)";
 
+                    // Use parameterized query to handle special characters
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
-                        cmd.Parameters.AddWithValue("@Name", roleClass.Name);
+                        cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = roleClass.Name;
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -34,6 +36,7 @@ namespace PPM.Dal
                 throw; // Rethrow the exception to propagate it to the calling code
             }
         }
+
 
         public List<RoleClass> GetAllRole()
         {
@@ -105,7 +108,7 @@ namespace PPM.Dal
             return RoleList;
         }
 
-        public List<RoleClass> GetRoleByName(string Name)
+        public List<RoleClass> GetRoleByName(string name)
         {
             List<RoleClass> RoleList = new List<RoleClass>();
 
@@ -114,18 +117,22 @@ namespace PPM.Dal
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
                     con.Open(); // Opening Connection
-                    string query = $"SELECT RoleId, Name FROM PPM_Role WHERE Name LIKE '%{Name}%';";
+                    string query = "SELECT RoleId, Name FROM PPM_Role WHERE Name LIKE @Name;";
+
                     using (SqlCommand cmd = new SqlCommand(query, con))
-                    using (SqlDataReader sdr = cmd.ExecuteReader())
                     {
-                        while (sdr.Read())
+                        cmd.Parameters.AddWithValue("@Name", $"%{name}%");
+                        using (SqlDataReader sdr = cmd.ExecuteReader())
                         {
-                            RoleClass roleClass = new()
+                            while (sdr.Read())
                             {
-                                RoleId = (long)sdr["RoleId"],
-                                Name = sdr["Name"]?.ToString() ?? string.Empty
-                            };
-                            RoleList.Add(roleClass);
+                                RoleClass roleClass = new()
+                                {
+                                    RoleId = (long)sdr["RoleId"],
+                                    Name = sdr["Name"]?.ToString() ?? string.Empty
+                                };
+                                RoleList.Add(roleClass);
+                            }
                         }
                     }
                 }
@@ -139,6 +146,7 @@ namespace PPM.Dal
 
             return RoleList;
         }
+
 
         public void DeleteRole(long RoleId)
         {

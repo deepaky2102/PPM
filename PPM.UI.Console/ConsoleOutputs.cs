@@ -96,11 +96,11 @@ namespace PPM.UI.Console
         {
             int Count = 0;  // Initialize a counter to keep track of the number of items processed.
 
-            System.Console.WriteLine($"|-------------------------------------------------------------------------------------|");
-            System.Console.WriteLine($"|                                  Employee in Project Details                        |");
-            System.Console.WriteLine($"|-------------------------------------------------------------------------------------|");
-            System.Console.WriteLine($"|   Sr. No.   |   Id   |   Project Id   |   Employee Id   |   Role Id   |    Status   |");
-            System.Console.WriteLine($"|-------------------------------------------------------------------------------------|");
+            System.Console.WriteLine($"|---------------------------------------------------------|");
+            System.Console.WriteLine($"|           Employee in Project Details                   |");
+            System.Console.WriteLine($"|---------------------------------------------------------|");
+            System.Console.WriteLine($"|   Sr. No.   |   Id   |   Project Id   |   Employee Id   |");
+            System.Console.WriteLine($"|---------------------------------------------------------|");
 
             if (ListRetrieve != null && ListRetrieve.Any()) // Check if ListRetrieve is not null and contains at least one item.
             {
@@ -109,24 +109,16 @@ namespace PPM.UI.Console
                 {
                     Count++;    // Increment the counter for displaying the serial number.
 
-                    // Display project details in a formatted table.
-                    if (item.Status == "Active")
-                    {
-                        System.Console.WriteLine($"|     {Count}      |   {item.Id}    |        {item.ProjectId}       |         {item.EmployeeId}        |      {item.RoleId}      |   {item.Status}    |");
-                        System.Console.WriteLine($"|-------------------------------------------------------------------------------------|");
-                    }
-                    else
-                    {
-                        System.Console.WriteLine($"|     {Count}      |   {item.Id}    |        {item.ProjectId}       |         {item.EmployeeId}        |      {item.RoleId}      |  {item.Status}   |");
-                        System.Console.WriteLine($"|-------------------------------------------------------------------------------------|");
-                    }
+
+                    System.Console.WriteLine($"|     {Count}      |   {item.Id}    |        {item.ProjectId}       |         {item.EmployeeId}        |");
+                    System.Console.WriteLine($"|---------------------------------------------------------|");
                 }
             }
             else
             {
                 // If the list is empty or null, display "Null" values in the table.
-                System.Console.WriteLine($"|    Null     |  Null  |      Null      |       Null      |     Null    |     Null    |");
-                System.Console.WriteLine($"|-------------------------------------------------------------------------------------|");
+                System.Console.WriteLine($"|    Null     |  Null  |      Null      |       Null      |");
+                System.Console.WriteLine($"|---------------------------------------------------------|");
             }
         }
     }

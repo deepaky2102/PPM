@@ -45,9 +45,7 @@
 	(
 		Id BIGINT IDENTITY (1,1) PRIMARY KEY,
 		ProjectId BIGINT FOREIGN KEY REFERENCES PPM_Project(ProjectId),
-		EmployeeId BIGINT FOREIGN KEY REFERENCES PPM_Employee(EmployeeId),
-		RoleId BIGINT FOREIGN KEY REFERENCES PPM_Role(RoleId),
-		Status VARCHAR(10) DEFAULT 'Active'
+		EmployeeId BIGINT FOREIGN KEY REFERENCES PPM_Employee(EmployeeId)
 	);
 
 /*	Inserting The Data Values in Tables: PPM_Project, PPM_Role, PPM_Employee and PPM_ProEmpRel. */
@@ -56,13 +54,13 @@
 	Insert Into PPM_Project(Name, StartDate, EndDate) Values ('Btech', '2019-07-08','2023-04-19');
 
 --	Insert Data Values From into PPM_Role.
-	Insert Into PPM_Role(Name) Values ('Student');
+	Insert Into PPM_Role(Name) Values ('UI/UX');
 
 --	Insert Data Values From into PPM_Employee.
 	Insert Into PPM_Employee(FirstName, LastName, Email, MobileNumber, Address, RoleId) Values ('Deepak','Yadav','dy260218@gmail.com','9974901567', 'Silvassa', 1);
 
 --	Insert Data Values From into PPM_ProEmpRel.
-	Insert Into PPM_ProEmpRel(ProjectId, EmployeeId) Values (1, 1, 1);
+	Insert Into PPM_ProEmpRel(ProjectId, EmployeeId) Values (1, 1);
 
 /*	Retrieve Data From Tables: PPM_Project, PPM_Role, PPM_Employee and PPM_ProEmpRel. */
 
@@ -76,7 +74,7 @@
 	Select EmployeeId, FirstName, LastName, Email, MobileNumber, Address, RoleId From PPM_Employee;
 
 --	Retrieving Data From PPM_ProEmpRel Table.
-	Select Id, ProjectId, EmployeeId, RoleId, Status From PPM_ProEmpRel;
+	Select Id, ProjectId, EmployeeId From PPM_ProEmpRel;
 
 --	Retrieve All data from PPM's Tables.
 	Select * From PPM_Role;
@@ -102,3 +100,5 @@
 	Drop Table PPM_Employee;
 	Drop Table PPM_Role;
 	Drop Table PPM_Project;
+
+	SELECT TOP 1 * FROM PPM_Project ORDER BY ProjectId DESC;

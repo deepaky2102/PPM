@@ -12,20 +12,12 @@ namespace PPM.UI.Console
         readonly EmployeeProjectRelationMethod employeeProjectRelationMethod = new();
         readonly ProjectMethods projectMethods = new();
         readonly RoleMethods roleMethods = new();
-        readonly EmployeeDal employeeDal = new();
 
         public void InsertProjectDetails()
         {
             try
             {
                 ProjectClass IProjectObject = new ProjectClass(); // Initialize the required properties.
-
-                // Set the ProjectId property of the IProjectObject by retrieving input from the ProjectIdExistCheck method.
-                // IProjectObject.ProjectId = projectMethods.AssignPrimaryId();
-                // if (IProjectObject.ProjectId == 0)
-                // {
-                //     throw new ArgumentException("Unable to process the task");
-                // }
 
                 // Set the Name property of the IProjectObject by retrieving input from the ProjectName method.
                 IProjectObject.Name = consoleInputs.ProjectName()!;
@@ -87,26 +79,6 @@ namespace PPM.UI.Console
                 }
 
                 projectMethods.AddNewObject(IProjectObject);   // Add the new project to the list of project.
-
-                while (true)
-                {
-                    System.Console.WriteLine("Do You want to add employee to project?");
-                    System.Console.WriteLine("Enter 'Y' for 'Yes' or 'N' for 'No'.");
-                    string input = System.Console.ReadLine()!;
-
-                    if (input == "Y" || input == "y")
-                    {
-                        InsertEmployeeInProject(IProjectObject.ProjectId);
-                    }
-                    else if (input == "N" || input == "n")
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        System.Console.WriteLine("Wrong input");
-                    }
-                }
             }
             catch (ArgumentException exp)
             {
@@ -120,12 +92,6 @@ namespace PPM.UI.Console
             try
             {
                 RoleClass IRoleObject = new();       // Create an instance of the RoleClass to store role details.
-
-                // IRoleObject.RoleId = roleMethods.AssignPrimaryId();
-                // if (IRoleObject.RoleId == 0)
-                // {
-                //     throw new ArgumentException("Unable to Process the task");
-                // }
 
                 IRoleObject.Name = consoleInputs.RoleName()!;
                 if (IRoleObject.Name == string.Empty || IRoleObject.Name == "0")
@@ -148,14 +114,8 @@ namespace PPM.UI.Console
             {
                 EmployeeClass IEmployeeObject = new();  // Create an instance of the EmployeeClass to store employee details.
 
-                // IEmployeeObject.EmployeeId = employeeMethods.AssignPrimaryId();
-                // if (IEmployeeObject.EmployeeId == 0)
-                // {
-                //     throw new ArgumentException("Unable to Process the task");
-                // }
-
                 IEmployeeObject.FirstName = consoleInputs.FirstName()!;
-                if (IEmployeeObject.FirstName ==  string.Empty || IEmployeeObject.FirstName == "0")
+                if (IEmployeeObject.FirstName == string.Empty || IEmployeeObject.FirstName == "0")
                 {
                     throw new ArgumentException("Unable to Process the task");
                 }
@@ -204,12 +164,6 @@ namespace PPM.UI.Console
             EmployeeProjectRelationClass IEPRObject = new();       // Create an instance of the EmployeeProjectRelationClass to store role details.
             try
             {
-                // IEPRObject.Id = employeeProjectRelationMethod.AssignPrimaryId();
-                // if (IEPRObject.Id == 0)
-                // {
-                //     throw new ArgumentException("Unable to Process the task");
-                // }
-
                 IEPRObject.ProjectId = consoleInputs.AddProjectIdToDetails(consoleInputs.ProjectId());
                 if (IEPRObject.ProjectId == 0)
                 {
@@ -221,20 +175,9 @@ namespace PPM.UI.Console
                 {
                     throw new ArgumentException("Unable to Process the task");
                 }
-
-                // Find the role based on EmployeeId
-                // var role = EmployeeMethods.EmployeeList.Find(employee => employee.EmployeeId == IEPRObject.EmployeeId);
-                long RoleId = employeeDal.EmployeeRole(IEPRObject.EmployeeId);
-                if (RoleId != 0)
-                {
-                    IEPRObject.RoleId = RoleId;
-
-                    employeeProjectRelationMethod.AddNewObject(IEPRObject);
-                }
                 else
                 {
-                    // Handle the case where role is null (employee not found)
-                    throw new ArgumentException("Employee not found");
+                    employeeProjectRelationMethod.AddNewObject(IEPRObject);
                 }
             }
             catch (ArgumentException exp)
@@ -248,35 +191,19 @@ namespace PPM.UI.Console
         {
             try
             {
-                EmployeeProjectRelationClass IEPRObject = new();       // Create an instance of the EmployeeProjectRelationClass to store role details.
-
-                // IEPRObject.Id = employeeProjectRelationMethod.AssignPrimaryId();
-                // if (IEPRObject.Id == 0)
-                // {
-                //     throw new ArgumentException("Unable to Process the task");
-                // }
-
-                IEPRObject.ProjectId = ProjectId;
+                EmployeeProjectRelationClass IEPRObject = new()
+                {
+                    ProjectId = ProjectId
+                };
 
                 IEPRObject.EmployeeId = consoleInputs.EmployeeExistInProjectCheck(IEPRObject.ProjectId);
                 if (IEPRObject.EmployeeId == 0)
                 {
                     throw new ArgumentException("Unable to Process the task");
                 }
-
-                // Find the role based on EmployeeId
-                // var role = EmployeeMethods.EmployeeList.Find(employee => employee.EmployeeId == IEPRObject.EmployeeId);
-                long RoleId = employeeDal.EmployeeRole(IEPRObject.EmployeeId);
-                if (RoleId != 0)
-                {
-                    IEPRObject.RoleId = RoleId;
-
-                    employeeProjectRelationMethod.AddNewObject(IEPRObject);
-                }
                 else
                 {
-                    // Handle the case where role is null (employee not found)
-                    throw new ArgumentException("Employee not found");
+                    employeeProjectRelationMethod.AddNewObject(IEPRObject);
                 }
             }
             catch (ArgumentException exp)

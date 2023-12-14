@@ -15,6 +15,7 @@
           "Microsoft.EntityFrameworkCore.InMemory": "7.0.14",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.14",
           "PPM.Domain": "1.0.0",
+          "PPM.Entity.Framework": "1.0.0",
           "PPM.Model": "1.0.0",
           "Swashbuckle.AspNetCore": "6.5.0"
         },

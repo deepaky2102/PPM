@@ -1,7 +1,6 @@
 using PPM.Model;
 namespace PPM.Entity.Framework
 {
-
     public class EmployeeEntityClass
     {
         private List<EmployeeClass> employeeList { get; set; } = new List<EmployeeClass>(); // Change to instance field
@@ -22,6 +21,7 @@ namespace PPM.Entity.Framework
                 Console.WriteLine($"Error: {ex.Message}");
                 throw; // Rethrow the exception to propagate it to the calling code
             }
+
         }
 
         public List<EmployeeClass> GetAllemployee()
@@ -162,30 +162,6 @@ namespace PPM.Entity.Framework
             }
         }
 
-        public long EmployeeRole(long EmployeeId)
-        {
-            long RoleId = 0;
-            try
-            {
-                using (var context = new EntityFrameworkClass())
-                {
-                    var employee = context.PPM_Employee.Find(EmployeeId);
-                    if (employee != null)
-                    {
-                        RoleId = employee.RoleId;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                // Log the exception
-                Console.WriteLine($"Error: {ex.Message}");
-                throw; // Rethrow the exception to propagate it to the calling code
-            }
-
-            return RoleId;
-        }
-
         public bool EmployeeExist(long EmployeeId)
         {
             try
@@ -227,6 +203,23 @@ namespace PPM.Entity.Framework
                 using (var context = new EntityFrameworkClass())
                 {
                     return context.PPM_Employee.Any(e => e.MobileNumber == MobileNumber);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Console.WriteLine($"Error: {ex.Message}");
+                throw; // Rethrow the exception to propagate it to the calling code
+            }
+        }
+
+        public bool EmployeeActiveAsRole(long RoleId)
+        {
+            try
+            {
+                using (var context = new EntityFrameworkClass())
+                {
+                    return context.PPM_Employee.Any(e => e.RoleId == RoleId);
                 }
             }
             catch (Exception ex)

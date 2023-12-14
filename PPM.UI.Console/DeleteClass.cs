@@ -1,6 +1,7 @@
 using PPM.Dal;
 using PPM.Domain;     // Import the PPM.UI.Domain namespace to use classes from it.
 using PPM.Model;      // Import the PPM.UI.Model namespace to use classes from it.
+using PPM.Entity.Framework;
 
 namespace PPM.UI.Console
 {
@@ -11,14 +12,19 @@ namespace PPM.UI.Console
         readonly EmployeeProjectRelationMethod employeeProjectRelationMethod = new();
         readonly ProjectMethods projectMethods = new();
         readonly RoleMethods roleMethods = new();
+        readonly EmployeeDal employeeDal = new();
         readonly EmployeeProjectRelationDal employeeProjectRelationDal = new();
         readonly ProjectDal projectDal = new();
+        readonly EmployeeEntityClass employeeEntityClass = new();
+        readonly EmployeeProjectEntityClass employeeProjectEntityClass = new();
+        readonly ProjectEntityClass projectEntityClass = new();
         public void DeleteProject(List<ProjectClass> ListRetrieve)
         {
             long ProjectId = consoleInputs.ProjectId();
 
             // if (EmployeeProjectRelationMethod.EmpProRelList.Exists(project => project.ProjectId == ProjectId && project.Status == "Active"))
-            if(employeeProjectRelationDal.EmployeeActiveInProject(ProjectId))
+            // if(employeeProjectRelationDal.EmployeeActiveInProject(ProjectId))
+            if(employeeProjectEntityClass.EmployeeActiveInProject(ProjectId))
             {
                 System.Console.WriteLine("Employee Present in Project, remove from the project first.");
             }
@@ -28,7 +34,8 @@ namespace PPM.UI.Console
                 // ProjectClass ProjectToRemove = ListRetrieve.Find(project => project.ProjectId == ProjectId)!;
 
                 // if (ProjectToRemove != null)
-                if(projectDal.ProjectExist(ProjectId))
+                // if(projectDal.ProjectExist(ProjectId))
+                if(projectEntityClass.ProjectExist(ProjectId))
                 {
                     // projectMethods.DeleteObject(ProjectToRemove);
                     projectMethods.DeleteObject(ProjectId);
@@ -46,10 +53,11 @@ namespace PPM.UI.Console
         {
             long RoleId = consoleInputs.RoleId();
 
-            // if (EmployeeProjectRelationMethod.EmpProRelList.Exists(role => role.RoleId == RoleId && role.Status == "Active"))
-            if(employeeProjectRelationDal.EmployeeActiveAsRole(RoleId))
+            // if (EmployeeMethods.EmployeeList.Exists(role => role.RoleId == RoleId))
+            // if(employeeDal.EmployeeActiveAsRole(RoleId))
+            if(employeeEntityClass.EmployeeActiveAsRole(RoleId))
             {
-                System.Console.WriteLine("An active employee with this role is assigned to the project. Please change the employee's role or remove them from the project first.");
+                System.Console.WriteLine("An active employee with this role is there, change employee role or remove employee to delete role.");
             }
             else
             {
@@ -75,7 +83,8 @@ namespace PPM.UI.Console
             long EmployeeId = consoleInputs.EmployeeId();
 
             // if (EmployeeProjectRelationMethod.EmpProRelList.Exists(employee => employee.EmployeeId == EmployeeId && employee.Status == "Active"))
-            if(employeeProjectRelationDal.EmployeeExistsInProject(EmployeeId))
+            // if(employeeProjectRelationDal.EmployeeExistsInProject(EmployeeId))
+            if(employeeProjectEntityClass.EmployeeExistsInProject(EmployeeId))
             {
                 System.Console.WriteLine("Employee Present in Project, remove from the project first.");
             }
@@ -107,7 +116,6 @@ namespace PPM.UI.Console
 
             if (IdToRemove != null)
             {
-                // Call a method to update the specified employee status in project details if they exist in the list.
                 // employeeProjectRelationMethod.DeleteObject(IdToRemove);
                 employeeProjectRelationMethod.DeleteObject(Id);
                 System.Console.WriteLine($" ID: {Id} is removed from Employee Record.");

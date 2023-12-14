@@ -38,6 +38,7 @@ namespace PPM.UI.Console
                     {
                         case 1:     // Case 1: Handle Add Project.
                             insertClass.InsertProjectDetails();
+                            consoleInputs.ChoiceToInsertEmployeeInProject();
                             break;
 
                         case 2:     // Case 2: Handle View Project Menu.

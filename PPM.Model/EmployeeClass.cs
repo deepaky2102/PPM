@@ -1,26 +1,39 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 namespace PPM.Model
 {
     public class EmployeeClass
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long EmployeeId { get; set; }     //  Id: Employee Id.
-        public  string FirstName { get; set; }     //  FirstName: Employee First Name.
-        public  string LastName { get; set; }     //  LastName: Employee Last Name.
-        public  string Email { get; set; }     //  Email: Email Id of Employee.
-        public  string MobileNumber { get; set; }     //  MobileNumber: Employe Contact Number
-        public  string Address { get; set; }     //  Address: Employee Address.
-        public long RoleId { get; set; }     //  RoleId: Employee RoleId.
 
-        public EmployeeClass()
-        {
-            EmployeeId = 0;
-            FirstName = "null";
-            LastName = "null";
-            Email = "null";
-            MobileNumber = "null";
-            Address = "null";
-            RoleId = 0;
-        }
+        [Required]
+        [MaxLength]
+        public string FirstName { get; set; } = "Undefined";      //  FirstName: Employee First Name.
+
+        [Required]
+        [MaxLength]
+        public string LastName { get; set; }  = "Undefined";   //  LastName: Employee Last Name.
+
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }  = "Undefined";   //  Email: Email Id of Employee.
+
+        [Required]
+        [MaxLength(10)]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "MobileNumber must be numeric")]
+        [StringLength(10, ErrorMessage = "MobileNumber must be 10 characters")]
+        public string MobileNumber { get; set; }   = "Undefined";    //  MobileNumber: Employe Contact Number
+
+        [Required]
+        [MaxLength(300)]
+        public string Address { get; set; }    = "Undefined";   //  Address: Employee Address.
+
+        [Required]
+        public long RoleId { get; set; }     //  RoleId: Employee RoleId.
+        [ForeignKey("RoleId")] // Explicitly specifying the foreign key relationship
+        public RoleClass? Role { get; set; } // Navigation property for the RoleClass
+
     }
 }

@@ -1,7 +1,7 @@
 using System.Globalization;
 using PPM.Dal;
 using PPM.Domain;     // Import the PPM.UI.Domain namespace to use classes from it.
-using PPM.Model;
+using PPM.Entity.Framework;
 
 namespace PPM.UI.Console
 {
@@ -12,6 +12,10 @@ namespace PPM.UI.Console
         readonly RoleDal roleDal = new();
         readonly EmployeeDal employeeDal = new();
         readonly EmployeeProjectRelationDal employeeProjectRelationDal = new();
+        readonly ProjectEntityClass projectEntityClass = new();
+        readonly RoleEntityClass roleEntityClass = new();
+        readonly EmployeeEntityClass employeeEntityClass = new();
+        readonly EmployeeProjectEntityClass employeeProjectEntityClass = new();
 
         public int Option()
         {
@@ -106,7 +110,8 @@ namespace PPM.UI.Console
             try
             {
                 // if (ProjectMethods.ProjectList.Exists(project => project.ProjectId == ProjectId))
-                if (projectDal.ProjectExist(ProjectId))
+                // if (projectDal.ProjectExist(ProjectId))
+                if (projectEntityClass.ProjectExist(ProjectId))
                 {
                     return ProjectId;
                 }
@@ -168,7 +173,8 @@ namespace PPM.UI.Console
 
                     // RoleClass existingRole = RoleMethods.RoleList!.Find(role => role.RoleId == RoleId)!;
                     // if (existingRole != null)
-                    if (roleDal.RoleExist(RoleId))
+                    // if (roleDal.RoleExist(RoleId))
+                    if (roleEntityClass.RoleExist(RoleId))
                     {
                         return RoleId;
                     }
@@ -231,10 +237,12 @@ namespace PPM.UI.Console
 
                     // Check if an employee with the same EmployeeId already exists in the employee list.
                     // if (EmployeeMethods.EmployeeList.Exists(employee => employee.EmployeeId == EmployeeId))
-                    if (employeeDal.EmployeeExist(EmployeeId))
+                    // if (employeeDal.EmployeeExist(EmployeeId))
+                    if (employeeEntityClass.EmployeeExist(EmployeeId))
                     {
                         // if (EmployeeProjectRelationMethod.EmpProRelList.Exists(project => project.ProjectId == ProjectId && project.EmployeeId == EmployeeId && project.Status == "Active"))
-                        if (employeeProjectRelationDal.EmployeeExistsInProject(ProjectId, EmployeeId))
+                        // if (employeeProjectRelationDal.EmployeeExistsInProject(ProjectId, EmployeeId))
+                        if (employeeProjectEntityClass.EmployeeExistsInProject(ProjectId, EmployeeId))
                         {
                             // If a matching EmployeeId is already present, display an error message.
                             System.Console.WriteLine("--------- Employee Id already Exists ---------");
@@ -393,7 +401,8 @@ namespace PPM.UI.Console
                     string Email = consoleInputs.Email()!;
                     // Check if the Email Id already exists in the list of employees.
                     // if (EmployeeMethods.EmployeeList.Exists(Employee => Employee.Email == Email))
-                    if (employeeDal.EmailExist(Email))
+                    // if (employeeDal.EmailExist(Email))
+                    if (employeeEntityClass.EmailExist(Email))
                     {
                         System.Console.WriteLine();
                         System.Console.WriteLine("--------- Email Id Already Exists ---------");
@@ -463,7 +472,8 @@ namespace PPM.UI.Console
 
                     // Check if the Mobile Number already exists in the list of employees.
                     // if (EmployeeMethods.EmployeeList.Exists(Employee => Employee.MobileNumber == MobileNumber))
-                    if (employeeDal.MobileNumberExist(MobileNumber))
+                    // if (employeeDal.MobileNumberExist(MobileNumber))
+                    if (employeeEntityClass.MobileNumberExist(MobileNumber))
                     {
                         System.Console.WriteLine();
                         System.Console.WriteLine("--------- Mobile Number Already Exists ---------");
@@ -535,6 +545,34 @@ namespace PPM.UI.Console
             {
                 string formattedDate = $"{Year}-{Month:D2}-{Day:D2}";
                 return DateTime.Parse(formattedDate, CultureInfo.InvariantCulture);
+            }
+        }
+
+        public void ChoiceToInsertEmployeeInProject()
+        {
+            InsertClass insertClass = new();
+            
+            // long ProjectId = projectDal.GetLastProjectId();
+            long ProjectId = projectEntityClass.GetLastProjectId();
+
+            while (true)
+            {
+                System.Console.WriteLine("Do You want to add employee to project?");
+                System.Console.WriteLine("Enter 'Y' for 'Yes' or 'N' for 'No'.");
+                string input = System.Console.ReadLine()!;
+
+                if (input == "Y" || input == "y")
+                {
+                    insertClass.InsertEmployeeInProject(ProjectId);
+                }
+                else if (input == "N" || input == "n")
+                {
+                    break;
+                }
+                else
+                {
+                    System.Console.WriteLine("Wrong input");
+                }
             }
         }
     }

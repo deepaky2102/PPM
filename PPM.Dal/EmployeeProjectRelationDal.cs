@@ -20,13 +20,12 @@ namespace PPM.Dal
                 {
                     con.Open(); // Opening Connection
 
-                    string query = "INSERT INTO PPM_ProEmpRel (ProjectId, EmployeeId, RoleId) VALUES (@ProjectId, @EmployeeId, @RoleId)";
+                    string query = "INSERT INTO PPM_ProEmpRel (ProjectId, EmployeeId) VALUES (@ProjectId, @EmployeeId)";
 
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@ProjectId", employeeProjectRelationClass.ProjectId);
                         cmd.Parameters.AddWithValue("@EmployeeId", employeeProjectRelationClass.EmployeeId);
-                        cmd.Parameters.AddWithValue("@RoleId", employeeProjectRelationClass.RoleId);
 
                         cmd.ExecuteNonQuery();
                     }
@@ -48,7 +47,7 @@ namespace PPM.Dal
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
                     con.Open(); // Opening Connection
-                    string query = "SELECT Id, ProjectId, EmployeeId, RoleId, Status FROM PPM_ProEmpRel;";
+                    string query = "SELECT Id, ProjectId, EmployeeId FROM PPM_ProEmpRel;";
                     SqlCommand cm = new SqlCommand(query, con);
 
                     using (SqlDataReader sdr = cm.ExecuteReader()) // Use 'using' statement to ensure the SqlDataReader is properly disposed
@@ -59,9 +58,7 @@ namespace PPM.Dal
                             {
                                 Id = (long)sdr["Id"],
                                 ProjectId = (long)sdr["ProjectId"],
-                                EmployeeId = (long)sdr["EmployeeId"],
-                                RoleId = (long)sdr["RoleId"],
-                                Status = sdr["Status"]?.ToString() ?? string.Empty
+                                EmployeeId = (long)sdr["EmployeeId"]
                             };
                             employeeList.Add(employeeProjectRelationClass);
                         }
@@ -86,7 +83,7 @@ namespace PPM.Dal
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
                     con.Open(); // Opening Connection
-                    string query = $"SELECT Id, ProjectId, EmployeeId, RoleId, Status FROM PPM_ProEmpRel where ProjectId = {ProjectId};";
+                    string query = $"SELECT Id, ProjectId, EmployeeId FROM PPM_ProEmpRel where ProjectId = {ProjectId};";
                     SqlCommand cm = new SqlCommand(query, con);
 
                     using (SqlDataReader sdr = cm.ExecuteReader()) // Use 'using' statement to ensure the SqlDataReader is properly disposed
@@ -97,9 +94,7 @@ namespace PPM.Dal
                             {
                                 Id = (long)sdr["Id"],
                                 ProjectId = (long)sdr["ProjectId"],
-                                EmployeeId = (long)sdr["EmployeeId"],
-                                RoleId = (long)sdr["RoleId"],
-                                Status = sdr["Status"]?.ToString() ?? string.Empty
+                                EmployeeId = (long)sdr["EmployeeId"]
                             };
                             employeeList.Add(employeeProjectRelationClass);
                         }
@@ -124,7 +119,7 @@ namespace PPM.Dal
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
                     con.Open(); // Opening Connection
-                    string query = $"SELECT Id, ProjectId, EmployeeId, RoleId, Status FROM PPM_ProEmpRel where EmployeeId = {EmployeeId};";
+                    string query = $"SELECT Id, ProjectId, EmployeeId FROM PPM_ProEmpRel where EmployeeId = {EmployeeId};";
                     SqlCommand cm = new SqlCommand(query, con);
 
                     using (SqlDataReader sdr = cm.ExecuteReader()) // Use 'using' statement to ensure the SqlDataReader is properly disposed
@@ -135,9 +130,7 @@ namespace PPM.Dal
                             {
                                 Id = (long)sdr["Id"],
                                 ProjectId = (long)sdr["ProjectId"],
-                                EmployeeId = (long)sdr["EmployeeId"],
-                                RoleId = (long)sdr["RoleId"],
-                                Status = sdr["Status"]?.ToString() ?? string.Empty
+                                EmployeeId = (long)sdr["EmployeeId"]
                             };
                             employeeList.Add(employeeProjectRelationClass);
                         }
@@ -162,7 +155,7 @@ namespace PPM.Dal
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
                     con.Open(); // Opening Connection
-                    string query = $"SELECT Id, ProjectId, EmployeeId, RoleId, Status FROM PPM_ProEmpRel where ProjectId ={ProjectId} And EmployeeId = {EmployeeId};";
+                    string query = $"SELECT Id, ProjectId, EmployeeId FROM PPM_ProEmpRel where ProjectId ={ProjectId} And EmployeeId = {EmployeeId};";
                     SqlCommand cm = new SqlCommand(query, con);
 
                     using (SqlDataReader sdr = cm.ExecuteReader()) // Use 'using' statement to ensure the SqlDataReader is properly disposed
@@ -173,9 +166,7 @@ namespace PPM.Dal
                             {
                                 Id = (long)sdr["Id"],
                                 ProjectId = (long)sdr["ProjectId"],
-                                EmployeeId = (long)sdr["EmployeeId"],
-                                RoleId = (long)sdr["RoleId"],
-                                Status = sdr["Status"]?.ToString() ?? string.Empty
+                                EmployeeId = (long)sdr["EmployeeId"]
                             };
                             employeeList.Add(employeeProjectRelationClass);
                         }
@@ -200,7 +191,7 @@ namespace PPM.Dal
                 {
                     con.Open(); // Opening Connection
 
-                    string query = "UPDATE PPM_ProEmpRel SET Status = 'Inactive' WHERE Id = @Id;";
+                    string query = "DELETE FROM PPM_ProEmpRel WHERE Id = @Id;";
 
 
                     using (SqlCommand cmd = new SqlCommand(query, con))
@@ -228,7 +219,7 @@ namespace PPM.Dal
                 {
                     con.Open(); // Opening Connection
 
-                    string query = $"SELECT * FROM PPM_ProEmpRel WHERE ProjectId = {ProjectId} AND EmployeeId = {EmployeeId} AND Status = 'Active'";
+                    string query = $"SELECT * FROM PPM_ProEmpRel WHERE ProjectId = {ProjectId} AND EmployeeId = {EmployeeId}";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -246,7 +237,6 @@ namespace PPM.Dal
             return check;
         }
         
-
         public bool EmployeeActiveInProject(long ProjectId)
         {
             bool check = false; // Initialize to a default value
@@ -257,7 +247,7 @@ namespace PPM.Dal
                 {
                     con.Open(); // Opening Connection
 
-                    string query = $"SELECT * FROM PPM_ProEmpRel WHERE ProjectId = {ProjectId} AND Status = 'Active'";
+                    string query = $"SELECT * FROM PPM_ProEmpRel WHERE ProjectId = {ProjectId}";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -275,34 +265,7 @@ namespace PPM.Dal
             return check;
         }
 
-        public bool EmployeeActiveAsRole(long RoleId)
-        {
-            bool check = false; // Initialize to a default value
 
-            try
-            {
-                using (SqlConnection con = new SqlConnection(connectionString))
-                {
-                    con.Open(); // Opening Connection
-
-                    string query = $"SELECT * FROM PPM_ProEmpRel WHERE RoleId = {RoleId} AND Status = 'Active'";
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        check = reader.Read(); // Check if there are rows
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                // Log the exception
-                Console.WriteLine($"Error: {ex.Message}");
-                throw; // Rethrow the exception to propagate it to the calling code
-            }
-
-            return check;
-        }
 
         public bool EmployeeExistsInProject(long EmployeeId)
         {
@@ -314,7 +277,7 @@ namespace PPM.Dal
                 {
                     con.Open(); // Opening Connection
 
-                    string query = $"SELECT * FROM PPM_ProEmpRel WHERE EmployeeId = {EmployeeId} AND Status = 'Active'";
+                    string query = $"SELECT * FROM PPM_ProEmpRel WHERE EmployeeId = {EmployeeId}";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {

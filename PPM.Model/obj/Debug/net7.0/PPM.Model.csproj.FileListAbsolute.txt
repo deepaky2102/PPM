@@ -10,7 +10,7 @@ C:\Users\DYadav\PPM\PPM.Model\obj\Debug\net7.0\PPM.Model.dll
 C:\Users\DYadav\PPM\PPM.Model\obj\Debug\net7.0\refint\PPM.Model.dll
 C:\Users\DYadav\PPM\PPM.Model\obj\Debug\net7.0\PPM.Model.pdb
 C:\Users\DYadav\PPM\PPM.Model\obj\Debug\net7.0\ref\PPM.Model.dll
-m:\Self-Project\PPM\PPM.Model\bin\Debug\net7.0\PPM.Model.deps.json
+M:\Self-Project\PPM\PPM.Model\bin\Debug\net7.0\PPM.Model.deps.json
 m:\Self-Project\PPM\PPM.Model\bin\Debug\net7.0\PPM.Model.dll
 m:\Self-Project\PPM\PPM.Model\bin\Debug\net7.0\PPM.Model.pdb
 m:\Self-Project\PPM\PPM.Model\obj\Debug\net7.0\PPM.Model.GeneratedMSBuildEditorConfig.editorconfig
@@ -20,4 +20,4 @@ m:\Self-Project\PPM\PPM.Model\obj\Debug\net7.0\PPM.Model.csproj.CoreCompileInput
 m:\Self-Project\PPM\PPM.Model\obj\Debug\net7.0\PPM.Model.dll
 m:\Self-Project\PPM\PPM.Model\obj\Debug\net7.0\refint\PPM.Model.dll
 m:\Self-Project\PPM\PPM.Model\obj\Debug\net7.0\PPM.Model.pdb
-m:\Self-Project\PPM\PPM.Model\obj\Debug\net7.0\ref\PPM.Model.dll
+M:\Self-Project\PPM\PPM.Model\obj\Debug\net7.0\ref\PPM.Model.dll

@@ -45,6 +45,30 @@ namespace PPM.Entity.Framework
             return employeeProjectList;
         }
 
+        public List<EmployeeProjectRelationClass> GetEmployeeProjectById(long Id)
+        {
+            employeeProjectList.Clear();
+            try
+            {
+                using (var context = new EntityFrameworkClass())
+                {
+                    var EmployeeProject = context.PPM_ProEmpRel.Find(Id);
+                    if (EmployeeProject != null)
+                    {
+                        employeeProjectList.Add(EmployeeProject);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Console.WriteLine($"Error: {ex.Message}");
+                throw; // Rethrow the exception to propagate it to the calling code
+            }
+
+            return employeeProjectList;
+        }
+
         public List<EmployeeProjectRelationClass> GetProEmpRelByProjectId(long ProjectId)
         {
             employeeProjectList.Clear();
@@ -114,7 +138,7 @@ namespace PPM.Entity.Framework
                     var relation = context.PPM_ProEmpRel.Find(Id);
                     if (relation != null)
                     {
-                        relation.Status = "Inactive";
+                        context.PPM_ProEmpRel.Remove(relation);
                         context.SaveChanges();
                     }
                 }
@@ -133,7 +157,7 @@ namespace PPM.Entity.Framework
             {
                 using (var context = new EntityFrameworkClass())
                 {
-                    return context.PPM_ProEmpRel.Any(e => e.ProjectId == ProjectId && e.EmployeeId == EmployeeId && e.Status == "Active");
+                    return context.PPM_ProEmpRel.Any(e => e.ProjectId == ProjectId && e.EmployeeId == EmployeeId);
                 }
             }
             catch (Exception ex)
@@ -150,24 +174,7 @@ namespace PPM.Entity.Framework
             {
                 using (var context = new EntityFrameworkClass())
                 {
-                    return context.PPM_ProEmpRel.Any(e => e.ProjectId == ProjectId && e.Status == "Active");
-                }
-            }
-            catch (Exception ex)
-            {
-                // Log the exception
-                Console.WriteLine($"Error: {ex.Message}");
-                throw; // Rethrow the exception to propagate it to the calling code
-            }
-        }
-
-        public bool EmployeeActiveAsRole(long RoleId)
-        {
-            try
-            {
-                using (var context = new EntityFrameworkClass())
-                {
-                    return context.PPM_ProEmpRel.Any(e => e.RoleId == RoleId && e.Status == "Active");
+                    return context.PPM_ProEmpRel.Any(e => e.ProjectId == ProjectId);
                 }
             }
             catch (Exception ex)
@@ -184,7 +191,7 @@ namespace PPM.Entity.Framework
             {
                 using (var context = new EntityFrameworkClass())
                 {
-                    return context.PPM_ProEmpRel.Any(e => e.EmployeeId == EmployeeId && e.Status == "Active");
+                    return context.PPM_ProEmpRel.Any(e => e.EmployeeId == EmployeeId);
                 }
             }
             catch (Exception ex)

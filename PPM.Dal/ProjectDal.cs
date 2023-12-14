@@ -12,6 +12,36 @@ namespace PPM.Dal
 
         }
 
+        public long GetLastProjectId()
+        {
+            long lastProjectId = 0;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string query = "SELECT TOP 1 ProjectId FROM PPM_Project ORDER BY ProjectId DESC";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            lastProjectId = reader.GetInt64(0); // Assuming ProjectId is of type LONG
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+            return lastProjectId;
+        }
+
         public void AddProject(ProjectClass projectClass)
         {
             try
